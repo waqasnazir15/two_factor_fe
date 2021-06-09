@@ -35,3 +35,6 @@ run following command
 
 Now the app is running and you can play with it
 > http://localhost:3000/
+
+# Demo
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/76955201/121376505-737cc980-c8f6-11eb-86e5-3ecfd8daa0d5.gif)
