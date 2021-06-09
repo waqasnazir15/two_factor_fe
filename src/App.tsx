@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserForm from './components/UserForm/UserForm';
+import UserFormToken from './components/UserFormToken/UserFormToken';
+import { useState } from 'react';
 
 function App() {
+   const [showCodeBox, setShowCodeBox] = useState<Boolean>(false);
+   const [authenticated, setAuthenticated] = useState<Boolean>(false);
+
+   const authorizationFlowView = () => {
+     return (
+       <>
+        <h1>
+          Activate two factor authentication for your account
+        </h1>
+
+        {showCodeBox && <UserFormToken setAuthenticated={setAuthenticated} />}
+
+        {!showCodeBox && <UserForm setShowCodeBox={setShowCodeBox}/>}
+       </>
+     );
+   }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      { authenticated && <h1> Congratulations, Your Two Factor Authentication is working</h1> }
+      { !authenticated && authorizationFlowView()}
     </div>
   );
 }
